@@ -130,6 +130,16 @@ main{
             img{
                 width: 100%;
             }
+            .vote{
+                position: absolute;
+                right: -40px;
+                div:nth-child(2){
+                    font-size: 1vw;
+                }
+                div:first-child, div:last-child{
+                    cursor: pointer;
+                }
+             }
             .vote div{
                 width: 40px;
                 height: 40px;
@@ -137,6 +147,8 @@ main{
                 display: flex;
                 justify-content: center;
                 align-items: center;
+               
+               }
             }
             
         }
@@ -150,6 +162,9 @@ main{
             display: flex;
             justify-content: space-between;
             color: rgb(82, 0, 0);
+            span{
+                cursor: pointer;
+            }
             i{
                 margin-right: 5px;
             }
@@ -165,5 +180,5 @@ main{
                 line-height: 2em;
             }
         }
-    }
+    
 }
