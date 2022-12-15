@@ -1,184 +1,472 @@
-@import "_variables";
+@import "_mixins";
 
-
+*{
+    font-family: 'Dancing Script', cursive; 
+    font-family: 'Darker Grotesque', sans-serif;
+    box-sizing: border-box;
+}
 body{
-    font-family: 'Unbounded', cursive;
-    font-family: 'Montserrat', sans-serif;
-
-    display: flex;
-    // font-size: 15px;
-    line-height: 1em;
-    font-weight: 500;
-
-    // max-width: 100vw;
-    // height: 100vh;
-    background-color: #f0eff0;
-    *{
-        box-sizing: border-box;
+    width: 100vw;
+    height: 100vw;
+    font-size: 1.15vw;
+   
+    & > *:not(.header .footer){
+         padding: 0 10%;
     }
-
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0;
+    text-transform: uppercase;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background-color: white;
+    ul{
+        display: flex;
+        width: 33%;
+    }
+    ul:first-child{
+        li{
+            margin-right: 20px;
+        }
+    }   
+    ul:nth-child(2){
+        display: flex;
+        justify-content: center;
+    }
+    ul:last-child{
+        display: flex;
+        justify-content: flex-end;
+        li{
+            margin-left: 20px;
+        }
+    }
 }
 
-header{
-    width: 33%;
-    height: 100%;
+.main-section{
+    color: white;
+    position: relative;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    position: fixed;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    overflow-y: auto;
-    z-index: 3;
-    
-    .header_contents{
-        overflow-wrap: break-word;
+    margin-bottom: 80px;
+    max-width: 1920px;
+    img{
+        width: 100%;
+        height: 100%;
+        filter: brightness(80%);
+    }
+    .main-section_box{
+        width: 40%;
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-    h1{
-        color: $red;
-        width: 60%;
-        font-size: 5vw;
-        text-align: start;
-        font-family: 'Unbounded', cursive;
-        line-height: 1em;
-        padding: 50px 0;
-
-    }
-    h3{
-        color: $red;
-        font-size: 1.3vw;
-        font-weight: 500;
-        margin-top: 40px;
-        width: 60%;
-        line-height: 1.2em;
-    }
-    .header_contents_p{
-        margin-top: 30px;
-        color: $red;
-        font-size: 0.9vw;
-        font-weight: 500;
-        text-align: justify;
-        width: 60%;
-        line-height: 1.1em;
-    }
-    ul{
-        color: $gray;
-        margin-top: 40px;
-        display: flex;
-        font-size: 0.7vw;
-        text-decoration: underline $gray;
-        flex-wrap: wrap;
-        width: 60%;
-        li{
-            margin-right: 20px;
-            cursor: pointer;
+        position: absolute;
+        p{
+            @include box-message;
         }
-    }
-    .header_latest-text{
-        color: $gray;
-        margin-top: 10px;
-        margin-bottom: 30px;
-        font-size: 0.4vw;
-        line-height: 1.1vw;
-        width: 60%;
+        span, div{
+            text-transform: uppercase;
+        }
+        div{
+            @include button;
+            border-color: white;
+            @include button-hover;
+        }
     }
 }
-main{
-    width: 100vw;
-    padding-left: 33%;
-    font-size: 0.8vw;
-    position: relative;
-    z-index: 1;
-
-    .movie{
-        background: linear-gradient(rgba(0,0,0,0), 95%, rgba(82,0,0,0.2));
-        background-color: $red;
-        width: 100%;
-        padding: 120px 150px 80px 150px;
-
-        .movie_header{
-            color: white;
+.book-section{
+    width: 100%;
+    height: 40%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+    "img message"
+    ;
+    margin-bottom: 80px;
+    .book-section_img{
+        grid-area: img;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .book-section_message{
+        grid-area: message;
+        background-color: #DEE8E9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .book-section_message_box{
+            width: 60%;
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            span:first-child{
-                font-size: 3vw;
-                font-weight: 700;
+            flex-direction: column;
+            align-items: center;
+            p{
+                @include box-message;
+            }
+            div{
+                @include button;
+                @include button-hover;
+                text-transform: uppercase
             }
         }
-        .movie_main{
-            color: white;
+    }
+}
+.title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+    span:first-child{
+        text-transform: uppercase;
+        font-weight: 500;
+        color: rgba(0,0,0,0.6);
+    }
+    span:last-child{
+        @include box-message;
+    }
+}
+.newthings{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "first sec third";
+    gap: 70px;
+    margin-bottom: 80px;
+    .newthings_first{
+        grid-area: first;
+    }
+    .newthings_sec{
+        grid-area: sec;
+    }
+    .newthings_first, .newthings_sec{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include hover-dark;
+        div:first-child{
             display: flex;
-            position: relative;
-            font-size: 1.6vw;
-            .marker{
-                width: 60px;
-                height: 40px;
-                background-color: #D9271B;
-                box-shadow: 1px 1px 2px 0.5px white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: absolute;
-                left: -10px;
-                top: 15px;
-            }
+            flex-direction: column;
+            align-items: center;
             img{
-                width: 100%;
+                width: 80%;
+                height: 80vh;
+                object-fit: cover;
+                margin-bottom: 20px;
             }
-            .vote{
-                position: absolute;
-                right: -40px;
-                div:nth-child(2){
-                    font-size: 1vw;
+            div{
+                margin-bottom: 15px;
+                span{
+                    margin: 5px 2px;
+                    text-transform: uppercase;
+                    font-size: 0.9vw;
+                    font-weight: 500;
                 }
-                div:first-child, div:last-child{
-                    cursor: pointer;
+                span:nth-child(2){
+                    color: rgba(0,0,0,.3);
                 }
-             }
-            .vote div{
-                width: 40px;
-                height: 40px;
-                background-color: #D9271B;
+                span:last-child{
+                    color: goldenrod;
+                }
+            }
+            .thing-name{
+                font-family: 'Dancing Script';
+                font-size: 2vw;
+            }
+            .price{
+                font-size: 0.9vw;
+                margin: 20px 0;
+            }
+        }
+        div:last-child{
+            @include button;
+            @include button-hover;
+            text-transform: uppercase;
+        }
+    }
+    
+    .newthings_third{
+        grid-area: third;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include hover-dark;
+        div:first-child{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            img{
+                width: 80%;
+                height: 80vh;
+                object-fit: cover;
+                margin-bottom: 20px;
+            }
+            #couple{
+                margin: 5px 2px 15px 2px;
+                text-transform: uppercase;
+                font-size: 0.9vw;
+                font-weight: 500;
+            }
+            .thing-name{
+                font-family: 'Dancing Script';
+                font-size: 2vw;
+            }
+            .price{
+                font-size: 0.9vw;
+                margin: 20px 0;
+            }
+        }
+        div:last-child{
+            @include button;
+            @include button-hover;
+            text-transform: uppercase;
+        }
+    }
+}
+.giftcard-section{
+    width: 100%;
+    height: 40%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+    "img message"
+    ;
+    margin-bottom: 80px;
+    .giftcard-section_img{
+        grid-area: img;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .giftcard-section_message{
+        grid-area: message;
+        background-color: #F3EDE8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .giftcard-section_message_box{
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            span{
+                text-transform: uppercase;
+                color: rgba(0,0,0,0.8);
+                font-weight: 500
+            }
+            p{
+                @include box-message;
+            }
+            div{
+                @include button;
+                @include button-hover;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+.story{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 30%);
+    grid-template-areas: 
+    "img1 story1"
+    "story2 img3"
+    "img2 story3";
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit:cover;
+    }
+    .story_story{
+        background-color: #F3EDE8;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include hover-dark;
+        span:first-child{
+            font-family: 'Dancing Script';
+            color: rgba(0,0,0,0.6);
+        }
+        span:nth-child(2){
+            font-family: 'Dancing Script';
+            font-size: 2vw;
+            margin: 40px 0;
+        }
+        span:last-child{
+            margin-top: 30px;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: rgba(0,0,0,.3);
+        }
+        i{
+            margin-left: 15px;
+        }
+    }
+    #story_img1{
+        grid-area: img1;
+    }
+    #story_img2{
+        grid-area: img2;
+    }
+    #story_img3{
+        grid-area: img3;
+    }
+    #story_story1{
+        grid-area: story1;
+    }
+    #story_story2{
+        grid-area: story2;
+    }
+    #story_story3{
+        grid-area: story3;
+    }
+}
+.join{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+    span:first-child{
+        text-transform: uppercase;
+        font-weight: 500;
+        color: rgba(0,0,0,0.6);
+    }
+    span:nth-child(2){
+        @include box-message;
+    width: 50%;
+
+    }
+    form{
+        display: flex;
+        position: relative;
+        input{
+            // font-family: 'Dancing Script';
+            color: rgba(0,0,0,.2);
+            font-size: 1.7vw;
+            border: none;
+            border-bottom: 1px solid rgba(0,0,0,.1);
+            padding: 15px;
+            width: 30vw;
+        }
+        button{
+            width: 2.5vw;
+            height: 2.5vw;
+            position: absolute;
+            right: 0;
+            bottom: 10px;
+            background-color: none;
+            border: none;
+            cursor: pointer;
+            i{
                 display: flex;
                 justify-content: center;
                 align-items: center;
-               
-               }
-            }
-            
-        }
-        .rate {
-            display: flex;
-            justify-content: end;
-            margin: 30px 0 50px 0;
-            color: #520000;
-        }
-        .comment{
-            display: flex;
-            justify-content: space-between;
-            color: rgb(82, 0, 0);
-            span{
-                cursor: pointer;
-            }
-            i{
-                margin-right: 5px;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                color: rgba(0,0,0,.3);
+                width: 2.5vw;
+                height: 2.5vw;
+                border: 1px solid rgba(0,0,0,.3);
             }
         }
-        .grid{
-            margin: 20px 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            .text{
-                color: white;
-                font-weight: 600;
-                grid-column: 2/-1;
-                line-height: 2em;
-            }
-        }
+    }
+}
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 300px);
+    grid-template-areas: 
+    "img1 img2 img3 img4"
+    "img5 img6 img7 img8";
+    margin-bottom: 80px;
+    img{
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        filter: brightness(70%);
+        @include hover-bright
+    }
+    img:first-child{
+        grid-area: img1;
+    }
+    img:nth-child(2){
+        grid-area:img2 ;
+    }
+    img:nth-child(3){
+        grid-area:img3 ;
+    }
+    img:nth-child(4){
+        grid-area:img4 ;
+    }
+    img:nth-child(5){
+        grid-area:img5 ;
+        
+    }
+    img:nth-child(6){
+        grid-area:img6 ;
+        
+    }
+    img:nth-child(7){
+        grid-area:img7 ;
+        
+    }
+    img:last-child{
+        grid-area: img8;
+        
+    }
+}
+.insta{
+    font-family: 'Dancing Script';
+    font-size: 3vw;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+    span{
+        color: rgba(0,0,0,.3);
+        margin-right: 10px;
+    }
+    a{
+        color: rgba(0,0,0,.1);
+        cursor: pointer;
+        text-decoration: none;
+    }
+}
+footer{
+    text-transform: uppercase;
+    font-size: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F3EDE8;
+    padding: 60px;
     
+    div{
+        width: 33%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        span{
+            margin-bottom: 10px;
+        }
+        span:first-child{
+            color: rgba(0,0,0,.5);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+    }
+    div:first-child, div:nth-child(2){
+            border-right: 1px solid rgba(0,0,0,.4);
+    }
+
 }

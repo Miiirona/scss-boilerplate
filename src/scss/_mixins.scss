@@ -1,0 +1,35 @@
+@mixin button{
+    border: 1px solid rgba(0,0,0,0.6);
+    padding: 1.2vw 6vw;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+@mixin box-message{
+    font-family: 'Dancing Script';
+            font-size: 2.5vw;
+            text-align: center;
+            line-height: 2.7vw;
+            margin: 25px 0;
+}
+
+@mixin hover-bright{
+    &:hover{
+        filter: brightness(110%);
+        transition: 0.7s;
+    }
+}
+@mixin hover-dark{
+    &:hover{
+        filter: brightness(80%);
+        transition: 0.7s;
+    }
+}
+
+@mixin button-hover{
+    &:hover{
+        background-color: rgba(31, 31, 31, 0.8);
+        transition: 0.4s;
+        color: white;
+    }
+}
