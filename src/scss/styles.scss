@@ -10,7 +10,7 @@ body{
     height: 100vw;
     font-size: 1.15vw;
    
-    & > *:not(.header .footer){
+    & > *:not(header footer){
          padding: 0 10%;
     }
 }
