@@ -10,14 +10,15 @@ body{
     height: 100vw;
     font-size: 1.15vw;
    
-    & > *:not(header footer){
+    & > *:not(header, footer){
          padding: 0 10%;
     }
 }
+
 header{
+    padding: 50px 10%;
     display: flex;
     justify-content: space-between;
-    padding: 50px 0;
     text-transform: uppercase;
     position: fixed;
     z-index: 10;
@@ -44,7 +45,6 @@ header{
         }
     }
 }
-
 .main-section{
     color: white;
     position: relative;
@@ -442,13 +442,13 @@ header{
     }
 }
 footer{
+    padding: 60px;
     text-transform: uppercase;
     font-size: 1vw;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #F3EDE8;
-    padding: 60px;
     
     div{
         width: 33%;
