@@ -1,473 +1,148 @@
-@import "_mixins";
+@import "_variables";
 
-*{
-    font-family: 'Dancing Script', cursive; 
-    font-family: 'Darker Grotesque', sans-serif;
-    box-sizing: border-box;
-}
-body{
+.grid{
+    background-color: $braun;
+    display: grid;
+    // place-content: center center;
+    grid-template-columns: 1fr 600px 1fr;
+    grid-template-rows: 1.5fr repeat(5, 1fr) 1.5fr;
+    gap: 1px;
     width: 100vw;
-    height: 100vw;
-    font-size: 1.15vw;
-   
-    & > *:not(header, footer){
-         padding: 0 10%;
-    }
-}
-
-header{
-    padding: 50px 10%;
-    display: flex;
-    justify-content: space-between;
+    height: 100vh;
+    font-size: 1.7em;
+    font-weight: 600;
     text-transform: uppercase;
-    position: fixed;
-    z-index: 10;
-    width: 100%;
-    background-color: white;
-    font-size: 0.8vw;
-    ul{
-        display: flex;
-        width: 33%;
-    }
-    ul:first-child{
-        li{
-            margin-right: 25px;
-        }
-    }   
-    ul:nth-child(2){
-        display: flex;
-        justify-content: center;
-    }
-    ul:last-child{
-        display: flex;
-        justify-content: flex-end;
-        li{
-            margin-left: 25px;
-        }
-    }
-}
-.main-section{
-    color: white;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 80px;
-    max-width: 1920px;
-    img{
-        width: 100%;
-        height: 100%;
-        filter: brightness(80%);
-    }
-    .main-section_box{
-        width: 40%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: absolute;
-        p{
-            @include box-message;
-        }
-        span, div{
-            text-transform: uppercase;
-        }
-        div{
-            @include button;
-            border-color: white;
-            @include button-hover;
-        }
-    }
-}
-.book-section{
-    width: 100%;
-    height: 40%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: 
-    "img message"
-    ;
-    margin-bottom: 80px;
-    .book-section_img{
-        grid-area: img;
-        img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-    .book-section_message{
-        grid-area: message;
-        background-color: #DEE8E9;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .book-section_message_box{
-            width: 60%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            p{
-                @include box-message;
-            }
-            div{
-                @include button;
-                @include button-hover;
-                text-transform: uppercase
-            }
-        }
-    }
-}
-.title{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 80px;
-    span:first-child{
-        text-transform: uppercase;
-        font-weight: 500;
-        color: rgba(0,0,0,0.6);
-    }
-    span:last-child{
-        @include box-message;
-    }
-}
-.newthings{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: "first sec third";
-    gap: 70px;
-    margin-bottom: 80px;
-    .newthings_first{
-        grid-area: first;
-    }
-    .newthings_sec{
-        grid-area: sec;
-    }
-    .newthings_first, .newthings_sec{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        @include hover-dark;
-        div:first-child{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            img{
-                width: 80%;
-                height: 80vh;
-                object-fit: cover;
-                margin-bottom: 20px;
-            }
-            div{
-                margin-bottom: 15px;
-                span{
-                    margin: 5px 2px;
-                    text-transform: uppercase;
-                    font-size: 0.9vw;
-                    font-weight: 500;
-                }
-                span:nth-child(2){
-                    color: rgba(0,0,0,.3);
-                }
-                span:last-child{
-                    color: goldenrod;
-                }
-            }
-            .thing-name{
-                font-family: 'Dancing Script';
-                font-size: 2vw;
-            }
-            .price{
-                font-size: 0.9vw;
-                margin: 20px 0;
-            }
-        }
-        div:last-child{
-            @include button;
-            @include button-hover;
-            text-transform: uppercase;
-        }
-    }
-    
-    .newthings_third{
-        grid-area: third;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        @include hover-dark;
-        div:first-child{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            img{
-                width: 80%;
-                height: 80vh;
-                object-fit: cover;
-                margin-bottom: 20px;
-            }
-            #couple{
-                margin: 5px 2px 15px 2px;
-                text-transform: uppercase;
-                font-size: 0.9vw;
-                font-weight: 500;
-            }
-            .thing-name{
-                font-family: 'Dancing Script';
-                font-size: 2vw;
-            }
-            .price{
-                font-size: 0.9vw;
-                margin: 20px 0;
-            }
-        }
-        div:last-child{
-            @include button;
-            @include button-hover;
-            text-transform: uppercase;
-        }
-    }
-}
-.giftcard-section{
-    width: 100%;
-    height: 40%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: 
-    "img message"
-    ;
-    margin-bottom: 80px;
-    .giftcard-section_img{
-        grid-area: img;
-        img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-    .giftcard-section_message{
-        grid-area: message;
-        background-color: #F3EDE8;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .giftcard-section_message_box{
-            width: 60%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            span{
-                text-transform: uppercase;
-                color: rgba(0,0,0,0.8);
-                font-weight: 500
-            }
-            p{
-                @include box-message;
-            }
-            div{
-                @include button;
-                @include button-hover;
-                text-transform: uppercase;
-            }
-        }
-    }
-}
-.story{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 30%);
-    grid-template-areas: 
-    "img1 story1"
-    "story2 img3"
-    "img2 story3";
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit:cover;
-    }
-    .story_story{
-        background-color: #F3EDE8;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        @include hover-dark;
-        span:first-child{
-            font-family: 'Dancing Script';
-            color: rgba(0,0,0,0.6);
-        }
-        span:nth-child(2){
-            font-family: 'Dancing Script';
-            font-size: 2vw;
-            margin: 40px 0;
-        }
-        span:last-child{
-            margin-top: 30px;
-            font-weight: 500;
-            text-transform: uppercase;
-            color: rgba(0,0,0,.3);
-        }
-        i{
-            margin-left: 15px;
-        }
-    }
-    #story_img1{
-        grid-area: img1;
-    }
-    #story_img2{
-        grid-area: img2;
-    }
-    #story_img3{
-        grid-area: img3;
-    }
-    #story_story1{
-        grid-area: story1;
-    }
-    #story_story2{
-        grid-area: story2;
-    }
-    #story_story3{
-        grid-area: story3;
-    }
-}
-.join{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 80px;
-    span:first-child{
-        text-transform: uppercase;
-        font-weight: 500;
-        color: rgba(0,0,0,0.6);
-    }
-    span:nth-child(2){
-        @include box-message;
-    width: 50%;
-
-    }
-    form{
-        display: flex;
-        position: relative;
-        input{
-            // font-family: 'Dancing Script';
-            color: rgba(0,0,0,.2);
-            font-size: 1.7vw;
-            border: none;
-            border-bottom: 1px solid rgba(0,0,0,.1);
-            padding: 15px;
-            width: 30vw;
-        }
-        button{
-            width: 2.5vw;
-            height: 2.5vw;
-            position: absolute;
-            right: 0;
-            bottom: 10px;
-            background-color: none;
-            border: none;
-            cursor: pointer;
-            i{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                color: rgba(0,0,0,.3);
-                width: 2.5vw;
-                height: 2.5vw;
-                border: 1px solid rgba(0,0,0,.3);
-            }
-        }
-    }
-}
-.gallery{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 300px);
-    grid-template-areas: 
-    "img1 img2 img3 img4"
-    "img5 img6 img7 img8";
-    margin-bottom: 80px;
-    img{
-        width: 100%;
-        height: 100%;
-        aspect-ratio: 1;
-        object-fit: cover;
-        filter: brightness(70%);
-        @include hover-bright
-    }
-    img:first-child{
-        grid-area: img1;
-    }
-    img:nth-child(2){
-        grid-area:img2 ;
-    }
-    img:nth-child(3){
-        grid-area:img3 ;
-    }
-    img:nth-child(4){
-        grid-area:img4 ;
-    }
-    img:nth-child(5){
-        grid-area:img5 ;
-        
-    }
-    img:nth-child(6){
-        grid-area:img6 ;
-        
-    }
-    img:nth-child(7){
-        grid-area:img7 ;
-        
-    }
-    img:last-child{
-        grid-area: img8;
-        
-    }
-}
-.insta{
-    font-family: 'Dancing Script';
-    font-size: 3vw;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 80px;
-    span{
-        color: rgba(0,0,0,.3);
-        margin-right: 10px;
-    }
-    a{
-        color: rgba(0,0,0,.1);
-        cursor: pointer;
-        text-decoration: none;
-    }
-}
-footer{
-    padding: 60px;
-    text-transform: uppercase;
-    font-size: 0.8vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #F3EDE8;
-    
     div{
-        width: 33%;
+        background-color: white;
+        color: $braun;
         display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: center;
-        span{
-            margin-bottom: 10px;
-        }
-        span:first-child{
-            color: rgba(0,0,0,.5);
-            margin-bottom: 20px;
-            font-weight: 600;
+        align-items: center;
+        &:hover:not(.blank, .logo, .bottom-text){
+            background-color: $braun;
+            color: white;
+            transition: 0.2s;
+            cursor: pointer;
         }
     }
-    div:first-child, div:nth-child(2){
-            border-right: 1px solid rgba(0,0,0,.4);
+    .logo{
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+        span{
+            border: 1px solid $braun;
+            border-radius: 50%;
+            width: 33px;
+            height: 33px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.6em;
+            font-weight: 400;
+            &:nth-child(2){
+                font-size: 0.8em;
+            }
+        }
+    }
+    .top-blank{
+        grid-column: 2/ span 1;
+        grid-row: 1 / span 1;
+    }
+    .menu{
+        grid-column: -2 / span 1;
+        grid-row: 1 / span 1;
+    }
+    .sharp10{
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+    }
+    .sharp9{
+        grid-column: 1 / span 1;
+        grid-row: 3 / span 1;
+    }
+    .sharp8{
+        grid-column: 1 / span 1;
+        grid-row: 4 / span 1;
+    }
+    .sharp7{
+        grid-column: 1 / span 1;
+        grid-row: 5 / span 1;
+    }
+    .sharp6{
+        grid-column: 1 / span 1;
+        grid-row: 6 / span 1;
+    }
+    .sharp5{
+        grid-column: -2 / span 1;
+        grid-row: 2 / span 1;
+    }
+    .sharp4{
+        grid-column: -2 / span 1;
+        grid-row: 3 / span 1;
+    }
+    .sharp3{
+        grid-column: -2 / span 1;
+        grid-row: 4 / span 1;
+    }
+    .sharp2{
+        grid-column: -2 / span 1;
+        grid-row: 5 / span 1;
+    }
+    .sharp1{
+        grid-column: -2 / span 1;
+        grid-row: 6 / span 1;
+    }
+    .left-bottom-blank{
+        grid-column: 1 / span 1;
+        grid-row: -2 / -1;
+    }
+    .bottom-text{
+        grid-column: 2 / span 1;
+        grid-row: -2 / span 1;
+        white-space: nowrap;
+        overflow: hidden;
+        span{
+            animation: 13s linear infinite running slidein;
+        }
     }
 
+    @keyframes slidein{
+        0%{
+            transform: translateX(1000px);
+        }
+        15%{
+            transform: translateX(700px);
+        }
+        30%{
+            transform: translateX(400px);
+        }
+        45%{
+            transform: translateX(100px);
+        }
+        60%{
+            transform: translateX(-200px);
+        }
+        75%{
+            transform: translateX(-500px);
+        }
+        90%{
+            transform: translateX(-800px);
+        }
+        100%{
+            transform: translateX(-980px);
+        }
+    }
+
+    .right-bottom-blank{
+        grid-column: -2 / span 1;
+        grid-row: -2 / span 1;
+    }
+    .center-img{
+        grid-column: 2 / span 1;
+        grid-row: 2 / span 5;
+        img{
+            object-fit: fill;
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
