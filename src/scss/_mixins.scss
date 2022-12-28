@@ -1,0 +1,16 @@
+@mixin button{
+    width: 130px;
+    height: 30px;
+    border: 1px solid rgb(211,211,211);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.3vh;
+    margin-right: 15px;
+    &:hover{
+        background-color: black;
+        color: white;
+        transition: 0.2s;
+    }
+}
